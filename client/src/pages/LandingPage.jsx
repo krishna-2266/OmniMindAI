@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
+import api from '../lib/api';
 import Navbar from '../components/Navbar';
 import NeuralAuroraBackground from '../components/NeuralAuroraBackground';
 import { 
@@ -16,18 +18,37 @@ import {
   ShieldCheck, 
   ArrowRight, 
   CheckCircle2, 
-  Activity,
-  AlertTriangle,
-  Play,
-  UploadCloud,
-  Cpu,
-  Search,
-  ExternalLink
+  Activity, 
+  AlertTriangle, 
+  Play, 
+  UploadCloud, 
+  Cpu, 
+  Search, 
+  ExternalLink,
+  Loader2
 } from 'lucide-react';
 
 export function LandingPage() {
-  const { user } = useAuth();
+  const { user, loginAsDemoUser } = useAuth();
   const navigate = useNavigate();
+  const toast = useToast();
+  const [isLoadingDemo, setIsLoadingDemo] = useState(false);
+
+  const handleLoadFactoryDemo = async () => {
+    setIsLoadingDemo(true);
+    try {
+      if (!user) {
+        loginAsDemoUser();
+      }
+      toast.info('Loading Turbine Unit 4B Factory Inspection demo...');
+      const res = await api.post('/api/projects/seed-demo');
+      toast.success('Turbine Unit 4B Factory Inspection demo loaded!');
+      navigate(`/projects/${res.data.id}`);
+    } catch (err) {
+      toast.error('Could not load demo project: ' + err.message);
+      setIsLoadingDemo(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#050816] text-[#F8FAFC] flex flex-col selection:bg-[#38BDF8]/30 selection:text-[#F8FAFC]">
@@ -223,13 +244,24 @@ export function LandingPage() {
               </div>
 
               <div className="flex items-center gap-3">
-                <Link
-                  to={user ? "/dashboard" : "/login"}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-[#2563EB] to-[#8B5CF6] text-[#F8FAFC] shadow-md shadow-[#2563EB]/25 hover:from-[#1d4ed8] hover:to-[#7c3aed] transition cursor-pointer"
+                <button
+                  onClick={handleLoadFactoryDemo}
+                  disabled={isLoadingDemo}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-[#2563EB] to-[#8B5CF6] text-[#F8FAFC] shadow-lg shadow-[#2563EB]/25 hover:from-[#1d4ed8] hover:to-[#7c3aed] transition cursor-pointer disabled:opacity-50"
+                  title="Load Factory Equipment Inspection demo and navigate directly to project"
                 >
-                  <Sparkles className="w-4 h-4 text-[#38BDF8]" />
-                  <span>Launch Live Workspace</span>
-                </Link>
+                  {isLoadingDemo ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-[#38BDF8]" />
+                      <span>Loading Demo Project...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-4 h-4 text-[#38BDF8]" />
+                      <span>Load Factory Demo</span>
+                    </>
+                  )}
+                </button>
               </div>
             </div>
 
