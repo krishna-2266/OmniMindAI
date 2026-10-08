@@ -7,8 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 class MemoryStore {
   constructor() {
     this.demoUserId = 'a0000000-0000-0000-0000-000000000001';
-    this.demoProjectId = 'p0000000-0000-0000-0000-000000000001';
-    this.demoConvId = 'c0000000-0000-0000-0000-000000000001';
+    this.demoProjectId = 'a0000000-0000-0000-0000-000000000002';
+    this.demoConvId = 'a0000000-0000-0000-0000-000000000003';
 
     this.profiles = [
       {
