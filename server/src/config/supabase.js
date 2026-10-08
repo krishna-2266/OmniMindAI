@@ -24,3 +24,4 @@ export const supabase = supabaseClient;
 export const isSupabaseConfigured = () => Boolean(supabaseClient);
 
 export default supabase;
+

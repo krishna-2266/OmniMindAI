@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
-import { Brain, ArrowRight, Loader2, Sparkles } from 'lucide-react';
+import { Brain, ArrowRight, Loader2, ShieldCheck } from 'lucide-react';
 
 export function RegisterPage() {
   const [fullName, setFullName] = useState('');
@@ -10,7 +10,7 @@ export function RegisterPage() {
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { signUp, loginAsDemoUser, isSupabaseConfigured } = useAuth();
+  const { signUp } = useAuth();
   const toast = useToast();
   const navigate = useNavigate();
 
@@ -38,12 +38,6 @@ export function RegisterPage() {
     }
   };
 
-  const handleDemoLogin = () => {
-    loginAsDemoUser();
-    toast.info('Entered as Lead Multimodal Investigator in Demo Mode.');
-    navigate('/dashboard');
-  };
-
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
@@ -56,7 +50,7 @@ export function RegisterPage() {
           <span className="text-2xl font-bold text-white tracking-tight">OmniMind AI</span>
         </Link>
         <h2 className="text-2xl font-bold tracking-tight text-white">
-          Create Your Multimodal Account
+          Create Your Enterprise Workspace
         </h2>
         <p className="mt-2 text-xs text-slate-400">
           Already have an account?{' '}
@@ -119,22 +113,16 @@ export function RegisterPage() {
                 <Loader2 className="w-4 h-4 animate-spin" />
               ) : (
                 <>
-                  <span>Register with Supabase</span>
+                  <span>Create Account</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-slate-800 text-center">
-            <button
-              type="button"
-              onClick={handleDemoLogin}
-              className="inline-flex items-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 transition"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Or bypass registration with 1-Click Demo</span>
-            </button>
+          <div className="mt-6 pt-5 border-t border-slate-800 text-center flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Encrypted with Supabase Auth &amp; PostgreSQL RLS</span>
           </div>
         </div>
       </div>

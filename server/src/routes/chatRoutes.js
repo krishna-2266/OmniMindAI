@@ -12,3 +12,4 @@ router.get('/projects/:id/conversations', chatController.getConversations);
 router.get('/conversations/:id/messages', chatController.getMessages);
 
 export default router;
+

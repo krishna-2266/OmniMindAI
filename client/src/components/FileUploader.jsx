@@ -108,3 +108,4 @@ export function FileUploader({ onUpload, isUploading }) {
 }
 
 export default FileUploader;
+

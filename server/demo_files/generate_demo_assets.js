@@ -89,3 +89,4 @@ const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600
 fs.writeFileSync(path.join(demoDir, 'damaged_machine.svg'), svgContent);
 
 console.log('Demo assets generated successfully in server/demo_files/');
+

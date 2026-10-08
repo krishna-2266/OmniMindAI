@@ -21,13 +21,8 @@ import {
 } from 'lucide-react';
 
 export function LandingPage() {
-  const { user, loginAsDemoUser } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
-
-  const handleLaunchDemo = () => {
-    loginAsDemoUser();
-    navigate('/dashboard');
-  };
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
@@ -35,14 +30,13 @@ export function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32">
-        {/* Subtle background ambient gradients */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-1/3 right-1/4 w-[350px] h-[250px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700/80 text-xs text-indigo-300 mb-8 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-            <span className="font-semibold">Hackathon Innovation:</span>
+            <span className="font-semibold">Next-Gen Intelligence:</span>
             <span className="text-slate-300">Cross-Modal Evidence Reasoning</span>
           </div>
 
@@ -59,24 +53,23 @@ export function LandingPage() {
 
           {/* CTA Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={handleLaunchDemo}
+            <Link
+              to={user ? "/dashboard" : "/register"}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02]"
             >
-              <Play className="w-4 h-4 fill-current" />
-              <span>Launch Live Hackathon Demo</span>
-            </button>
+              <span>{user ? "Open Dashboard" : "Start Analyzing Free"}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
 
             <Link
-              to="/register"
+              to={user ? "/dashboard" : "/login"}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 transition"
             >
-              <span>Create Project</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Sign In to Workspace</span>
             </Link>
           </div>
 
-          {/* Real-Time Cross-Modal Evidence Pipeline Preview Card */}
+          {/* Cross-Modal Evidence Pipeline Preview Card */}
           <div className="mt-16 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8 backdrop-blur-xl shadow-2xl max-w-4xl mx-auto text-left">
             <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
               <div className="flex items-center gap-2.5">
@@ -104,7 +97,7 @@ export function LandingPage() {
               </div>
               <div className="p-3 rounded-xl bg-slate-950 border border-emerald-500/30 text-center">
                 <Volume2 className="w-5 h-5 text-emerald-400 mx-auto mb-1.5" />
-                <span className="text-xs font-bold text-white block">Audio Audio</span>
+                <span className="text-xs font-bold text-white block">Audio Recording</span>
                 <span className="text-[10px] text-slate-400">Grinding @ 1800 RPM</span>
               </div>
               <div className="p-3 rounded-xl bg-slate-950 border border-purple-500/30 text-center">
@@ -181,7 +174,7 @@ export function LandingPage() {
             {/* OmniMind Approach */}
             <div className="p-6 rounded-2xl border border-indigo-500/30 bg-indigo-950/20 relative">
               <div className="absolute top-4 right-4 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                OmniMind Innovation
+                OmniMind Enterprise
               </div>
               <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
                 <Brain className="w-5 h-5" />
@@ -310,10 +303,10 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* CTA Footer */}
+      {/* Footer */}
       <footer className="mt-auto py-12 border-t border-slate-800 text-center text-xs text-slate-500">
         <p className="text-slate-400 font-medium">OmniMind AI — Understand Everything. Across Every Format.</p>
-        <p className="mt-1">Built for Multimodal AI Hackathon 2025.</p>
+        <p className="mt-1">Official Production Platform.</p>
       </footer>
     </div>
   );

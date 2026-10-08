@@ -11,3 +11,4 @@ router.post('/projects/:id/analyze', aiLimiter, analysisController.triggerAnalys
 router.get('/projects/:id/insights', analysisController.getInsights);
 
 export default router;
+

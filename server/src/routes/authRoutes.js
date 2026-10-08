@@ -7,3 +7,4 @@ const router = Router();
 router.get('/me', requireAuth, authController.getMe);
 
 export default router;
+

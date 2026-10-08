@@ -117,3 +117,4 @@ export function SettingsTab({ project, onUpdateProject, onDeleteProject }) {
 }
 
 export default SettingsTab;
+

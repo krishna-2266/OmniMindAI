@@ -53,3 +53,4 @@ export function detectModality(mimeType, filename) {
 
   return 'text';
 }
+

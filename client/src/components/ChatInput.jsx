@@ -72,3 +72,4 @@ export function ChatInput({ onSend, isLoading }) {
 }
 
 export default ChatInput;
+

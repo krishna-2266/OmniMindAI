@@ -24,7 +24,7 @@ export function Navbar() {
             <div className="flex items-center gap-2">
               <span className="font-bold text-lg text-white tracking-tight">OmniMind</span>
               <span className="text-[10px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                AI
+                PRO
               </span>
             </div>
             <span className="text-[10px] text-slate-400 hidden sm:inline -mt-0.5">
@@ -40,7 +40,7 @@ export function Navbar() {
             className="text-slate-300 hover:text-white transition flex items-center gap-1.5"
           >
             <FolderKanban className="w-4 h-4 text-slate-400" />
-            <span>Projects</span>
+            <span>Workspaces</span>
           </Link>
           <a
             href="#modalities"
@@ -60,13 +60,6 @@ export function Navbar() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
-          {isDemoMode && (
-            <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Demo Mode Active</span>
-            </div>
-          )}
-
           {user ? (
             <div className="flex items-center gap-2">
               <Link

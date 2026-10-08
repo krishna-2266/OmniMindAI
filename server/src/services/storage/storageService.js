@@ -135,3 +135,4 @@ export const storageService = {
 };
 
 export default storageService;
+

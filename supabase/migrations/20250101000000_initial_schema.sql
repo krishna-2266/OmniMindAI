@@ -346,3 +346,4 @@ CREATE POLICY "Users can delete their own project files"
         bucket_id = 'project-files' AND
         (storage.foldername(name))[1] = auth.uid()::text
     );
+

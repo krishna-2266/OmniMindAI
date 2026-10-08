@@ -127,3 +127,4 @@ export function Sidebar({ project, fileCount = 0 }) {
 }
 
 export default Sidebar;
+

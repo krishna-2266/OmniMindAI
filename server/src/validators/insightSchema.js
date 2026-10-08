@@ -36,3 +36,4 @@ export const AiInsightSchema = z.object({
 });
 
 export default AiInsightSchema;
+

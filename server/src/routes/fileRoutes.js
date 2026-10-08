@@ -17,3 +17,4 @@ router.get('/:id/signed-url', fileController.getSignedUrl);
 router.delete('/:id', fileController.deleteFile);
 
 export default router;
+

@@ -189,3 +189,4 @@ export function OverviewTab({ project, files = [], insights = [], onRunAnalysis,
 }
 
 export default OverviewTab;
+

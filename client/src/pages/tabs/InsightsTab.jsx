@@ -222,3 +222,4 @@ export function InsightsTab({
 }
 
 export default InsightsTab;
+

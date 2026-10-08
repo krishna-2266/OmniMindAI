@@ -11,3 +11,4 @@ router.post('/projects/:id/notes', noteController.createNote);
 router.delete('/:id', noteController.deleteNote);
 
 export default router;
+
