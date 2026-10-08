@@ -1,0 +1,2 @@
+EMERGENCY SHIFT NOTE (Oct 06, 2024 - D. Miller):
+Bypassed automated oiler because line pressure collapsed. Disassembled secondary filter basket and discovered extensive bronze/steel flakes trapped in the mesh. Tagged turbine breaker with preliminary warning. Do NOT remove lock without ultrasonic non-destructive testing of rotor core.

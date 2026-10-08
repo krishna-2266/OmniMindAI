@@ -1,0 +1,6 @@
+FIELD INTERVIEW RECORDING - AUDIO LOG
+Speaker: Dave Miller (Senior Field Reliability Engineer)
+Timestamp: Oct 05, 2024 - 08:30 AM
+Subject: Turbine Unit 4B Operational Anomaly
+
+"We ran Unit 4B under 80% load yesterday afternoon and immediately felt a heavy rhythmic grinding kicking in right at 1800 RPM. Control room SCADA showed green metrics, but you could physically feel the entire metal mezzanine shaking under your boots. That lower housing is running way hotter than the 62 degrees in Vance's paper—I clocked it over 88°C on my thermal spotter. If they run this during peak tomorrow, that shaft will seize solid."

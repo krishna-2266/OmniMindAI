@@ -1,0 +1,38 @@
+{
+  "name": "omnimind-server",
+  "version": "1.0.0",
+  "description": "Backend API for OmniMind AI - Multimodal Cross-Modal Evidence Reasoning Platform",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "multimodal",
+    "ai",
+    "gemini",
+    "cross-modal-reasoning",
+    "evidence",
+    "supabase"
+  ],
+  "author": "OmniMind AI Team",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^2.28.0",
+    "@supabase/supabase-js": "^2.49.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1",
+    "uuid": "^11.1.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
