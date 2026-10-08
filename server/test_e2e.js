@@ -45,6 +45,7 @@ async function runEndToEndVerification() {
     });
 
     // 3. Projects Listing
+    let projectId = memoryStore.demoProjectId;
     await test('Projects Fetching (/api/projects)', async () => {
       const res = await fetch(`${baseUrl}/api/projects`, {
         headers: { 'Authorization': 'Bearer demo-token' }
@@ -52,10 +53,10 @@ async function runEndToEndVerification() {
       const data = await res.json();
       if (!data.success || !Array.isArray(data.data)) throw new Error('Failed to retrieve projects');
       if (data.data.length === 0) throw new Error('Preloaded demo project not found');
+      projectId = data.data[0].id;
     });
 
     // 4. Project Details
-    const projectId = memoryStore.demoProjectId;
     await test('Project Detail Retrieval (/api/projects/:id)', async () => {
       const res = await fetch(`${baseUrl}/api/projects/${projectId}`, {
         headers: { 'Authorization': 'Bearer demo-token' }

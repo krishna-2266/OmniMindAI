@@ -1,17 +1,27 @@
 import { supabase, isSupabaseConfigured } from '../config/supabase.js';
 import memoryStore from '../lib/memoryStore.js';
+import config from '../config/env.js';
 import logger from '../utils/logger.js';
 
 /**
- * Authentication middleware verifying Supabase Auth JWT token
+ * Authentication middleware verifying Supabase Auth JWT token with strict production security
  */
 export async function requireAuth(req, res, next) {
   try {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      // In demo mode without token, allow demo user if query or header requests demo
-      if (req.headers['x-demo-mode'] === 'true' || process.env.DEMO_MODE === 'true' || !isSupabaseConfigured()) {
+      // In production with demo mode disabled, strict authentication is required
+      if (config.nodeEnv === 'production' && !config.demoMode) {
+        return res.status(401).json({
+          success: false,
+          message: 'Authentication required. Missing Bearer token.',
+          errorCode: 'AUTH_REQUIRED'
+        });
+      }
+
+      // In local development or demo mode without token, allow fallback demo user
+      if (req.headers['x-demo-mode'] === 'true' || config.demoMode || !isSupabaseConfigured()) {
         req.user = {
           id: memoryStore.demoUserId,
           email: 'demo@omnimind.ai',
@@ -28,6 +38,15 @@ export async function requireAuth(req, res, next) {
     }
 
     const token = authHeader.split(' ')[1];
+
+    // Reject demo token in strict production mode
+    if ((token === 'demo-token' || token === 'anonymous-demo') && config.nodeEnv === 'production' && !config.demoMode) {
+      return res.status(401).json({
+        success: false,
+        message: 'Demo credentials disabled in production environment.',
+        errorCode: 'DEMO_TOKEN_NOT_ALLOWED'
+      });
+    }
 
     if (token === 'demo-token' || token === 'anonymous-demo') {
       req.user = {
@@ -72,4 +91,3 @@ export async function requireAuth(req, res, next) {
 }
 
 export default requireAuth;
-

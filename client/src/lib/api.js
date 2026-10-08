@@ -25,9 +25,6 @@ api.interceptors.request.use(async (config) => {
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-    } else {
-      config.headers['x-demo-mode'] = 'true';
-      config.headers.Authorization = 'Bearer demo-token';
     }
   } catch (err) {
     console.warn('Could not attach auth token:', err);
@@ -40,6 +37,11 @@ api.interceptors.request.use(async (config) => {
 api.interceptors.response.use(
   (response) => response.data,
   (error) => {
+    // If backend returns 401 Unauthorized, clear cached session
+    if (error.response?.status === 401) {
+      localStorage.removeItem('omnimind_active_user');
+      localStorage.removeItem('omnimind_demo_mode');
+    }
     const errorMsg = error.response?.data?.message || error.message || 'An unexpected error occurred.';
     const errorCode = error.response?.data?.errorCode || 'API_ERROR';
     return Promise.reject(new Error(errorMsg, { cause: { errorCode, response: error.response } }));
@@ -47,4 +49,3 @@ api.interceptors.response.use(
 );
 
 export default api;
-

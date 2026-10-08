@@ -11,6 +11,7 @@ import ProjectWorkspace from './pages/ProjectWorkspace';
 import ProfilePage from './pages/ProfilePage';
 import LoadingSpinner from './components/LoadingState';
 
+// Guard for protected routes: requires authenticated user
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
 
@@ -29,13 +30,46 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
+// Guard for public-only auth routes: redirects already logged-in users to dashboard
+function PublicOnlyRoute({ children }) {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <LoadingSpinner size="lg" text="Checking Session..." />
+      </div>
+    );
+  }
+
+  if (user) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return children;
+}
+
 export function App() {
   return (
     <Routes>
       {/* Public Pages */}
       <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route
+        path="/login"
+        element={
+          <PublicOnlyRoute>
+            <LoginPage />
+          </PublicOnlyRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <PublicOnlyRoute>
+            <RegisterPage />
+          </PublicOnlyRoute>
+        }
+      />
 
       {/* Protected Workspaces */}
       <Route
