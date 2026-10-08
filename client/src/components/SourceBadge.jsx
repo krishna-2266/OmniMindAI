@@ -26,7 +26,7 @@ export function getModalityConfig(modality) {
       return {
         label: 'VIDEO',
         icon: Video,
-        color: 'text-purple-400 bg-purple-500/10 border-purple-500/20'
+        color: 'text-[#8B5CF6] bg-[#8B5CF6]/15 border-[#8B5CF6]/30'
       };
     case 'text':
     case 'document':
@@ -34,7 +34,7 @@ export function getModalityConfig(modality) {
       return {
         label: 'TEXT',
         icon: FileCode,
-        color: 'text-sky-400 bg-sky-500/10 border-sky-500/20'
+        color: 'text-[#38BDF8] bg-[#38BDF8]/15 border-[#38BDF8]/30'
       };
   }
 }
@@ -59,4 +59,3 @@ export function SourceBadge({ modality, size = 'sm', className = '' }) {
 }
 
 export default SourceBadge;
-

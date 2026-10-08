@@ -178,7 +178,7 @@ export function ProjectWorkspace() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col">
+      <div className="min-h-screen bg-[#050816] flex flex-col">
         <Navbar />
         <div className="flex-1 flex items-center justify-center">
           <LoadingSpinner size="lg" text="Loading Multimodal Evidence Workspace..." />
@@ -189,7 +189,7 @@ export function ProjectWorkspace() {
 
   if (error || !project) {
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col">
+      <div className="min-h-screen bg-[#050816] flex flex-col">
         <Navbar />
         <div className="flex-1 flex items-center justify-center p-4">
           <ErrorState message={error || 'Project not found.'} onRetry={loadWorkspace} />
@@ -252,7 +252,7 @@ export function ProjectWorkspace() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-[#050816] text-[#F8FAFC] flex flex-col selection:bg-[#38BDF8]/30 selection:text-[#F8FAFC]">
       <Navbar />
 
       <div className="flex-1 flex flex-col md:flex-row">

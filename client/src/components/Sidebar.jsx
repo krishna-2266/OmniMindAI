@@ -44,26 +44,26 @@ export function Sidebar({ project, fileCount = 0 }) {
   ];
 
   return (
-    <aside className="w-64 shrink-0 border-r border-slate-800 bg-slate-900/60 backdrop-blur-md flex flex-col min-h-[calc(100vh-4rem)]">
+    <aside className="w-64 shrink-0 border-r border-[#18224b] bg-[#050816]/95 backdrop-blur-md flex flex-col min-h-[calc(100vh-4rem)]">
       {/* Project Header in Sidebar */}
-      <div className="p-4 border-b border-slate-800/80">
+      <div className="p-4 border-b border-[#18224b]">
         <NavLink
           to="/dashboard"
-          className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-indigo-400 transition mb-3"
+          className="inline-flex items-center gap-1.5 text-xs text-[#94A3B8] hover:text-[#38BDF8] transition mb-3"
         >
           <ChevronLeft className="w-3.5 h-3.5" />
           <span>Back to Projects</span>
         </NavLink>
-        <h2 className="text-sm font-semibold text-white truncate" title={project?.name}>
+        <h2 className="text-sm font-semibold text-[#F8FAFC] truncate" title={project?.name}>
           {project?.name || 'Loading Project...'}
         </h2>
-        <p className="text-[11px] text-slate-400 truncate mt-0.5">
+        <p className="text-[11px] text-[#94A3B8] truncate mt-0.5">
           {project?.description || 'Multimodal Workspace'}
         </p>
       </div>
 
       {/* Nav Items */}
-      <nav className="p-3 space-y-1 flex-1">
+      <nav className="p-3 space-y-1.5 flex-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
@@ -72,10 +72,10 @@ export function Sidebar({ project, fileCount = 0 }) {
               to={item.to}
               end={item.end}
               className={({ isActive }) =>
-                `flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium transition ${
+                `flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition ${
                   isActive
-                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
-                    : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
+                    ? 'bg-gradient-to-r from-[#2563EB] to-[#8B5CF6] text-[#F8FAFC] shadow-md shadow-[#2563EB]/25 font-semibold'
+                    : 'text-[#94A3B8] hover:bg-[#0a0f26] hover:text-[#F8FAFC]'
                 }`
               }
             >
@@ -85,10 +85,10 @@ export function Sidebar({ project, fileCount = 0 }) {
                     <Icon
                       className={`w-4 h-4 ${
                         isActive
-                          ? 'text-white'
+                          ? 'text-[#F8FAFC]'
                           : item.highlight
-                          ? 'text-indigo-400'
-                          : 'text-slate-400'
+                          ? 'text-[#38BDF8]'
+                          : 'text-[#94A3B8]'
                       }`}
                     />
                     <span>{item.label}</span>
@@ -97,15 +97,15 @@ export function Sidebar({ project, fileCount = 0 }) {
                     <span
                       className={`px-1.5 py-0.5 text-[10px] rounded-full font-bold ${
                         isActive
-                          ? 'bg-white/20 text-white'
-                          : 'bg-slate-800 text-slate-300 border border-slate-700'
+                          ? 'bg-white/20 text-[#F8FAFC]'
+                          : 'bg-[#0a0f26] text-[#38BDF8] border border-[#18224b]'
                       }`}
                     >
                       {item.badge}
                     </span>
                   )}
                   {item.highlight && !isActive && (
-                    <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse"></span>
                   )}
                 </>
               )}
@@ -115,16 +115,15 @@ export function Sidebar({ project, fileCount = 0 }) {
       </nav>
 
       {/* Footer info */}
-      <div className="p-4 border-t border-slate-800/80 text-[11px] text-slate-500">
-        <div className="flex items-center gap-1.5 font-medium text-slate-400 mb-1">
-          <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <div className="p-4 border-t border-[#18224b] text-[11px] text-[#94A3B8]">
+        <div className="flex items-center gap-1.5 font-medium text-[#F8FAFC] mb-1">
+          <span className="w-2 h-2 rounded-full bg-[#38BDF8]"></span>
           <span>Unified Evidence Layer</span>
         </div>
-        <span>Connected to Google Gemini Multimodal Reasoning Engine</span>
+        <span className="text-[10px] text-[#94A3B8]">Connected to Google Gemini AI Engine</span>
       </div>
     </aside>
   );
 }
 
 export default Sidebar;
-

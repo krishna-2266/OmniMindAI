@@ -17,7 +17,7 @@ export function FileCard({ file, onPreview, onDelete }) {
   const isProcessing = file.processing_status === 'processing' || file.processing_status === 'uploaded';
 
   return (
-    <div className="glass-card rounded-xl p-4 flex flex-col justify-between group">
+    <div className="glass-card rounded-xl p-4 flex flex-col justify-between group border border-[#18224b] hover:border-[#38BDF8]/40 hover:shadow-lg hover:shadow-[#2563EB]/15">
       <div>
         {/* Top Header: Modality & Status */}
         <div className="flex items-center justify-between gap-2 mb-2">
@@ -42,20 +42,20 @@ export function FileCard({ file, onPreview, onDelete }) {
         </div>
 
         {/* File Name */}
-        <h4 className="text-sm font-semibold text-white truncate" title={file.original_name}>
+        <h4 className="text-sm font-semibold text-[#F8FAFC] truncate" title={file.original_name}>
           {file.original_name}
         </h4>
 
         {/* AI Summary Snippet if available */}
         {file.ai_summary && (
-          <p className="text-xs text-slate-300/80 mt-1.5 line-clamp-2 leading-relaxed bg-slate-900/40 p-2 rounded-lg border border-slate-800">
+          <p className="text-xs text-[#94A3B8] mt-1.5 line-clamp-2 leading-relaxed bg-[#0a0f26]/80 p-2.5 rounded-lg border border-[#18224b]">
             {file.ai_summary}
           </p>
         )}
       </div>
 
       {/* Footer Info & Actions */}
-      <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+      <div className="mt-4 pt-3 border-t border-[#18224b] flex items-center justify-between text-[11px] text-[#94A3B8]">
         <div>
           <span>{formatBytes(file.file_size)}</span>
           <span className="mx-1.5">•</span>
@@ -65,14 +65,14 @@ export function FileCard({ file, onPreview, onDelete }) {
         <div className="flex items-center gap-1">
           <button
             onClick={() => onPreview(file)}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#38BDF8] hover:bg-[#0a0f26] transition cursor-pointer"
             title="Inspect Extracted Evidence"
           >
             <Eye className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={() => onDelete(file.id)}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition"
+            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-rose-400 hover:bg-[#0a0f26] transition cursor-pointer"
             title="Remove from Repository"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -84,4 +84,3 @@ export function FileCard({ file, onPreview, onDelete }) {
 }
 
 export default FileCard;
-

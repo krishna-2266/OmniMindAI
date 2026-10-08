@@ -11,17 +11,17 @@ export function ChatMessage({ message, onSourceClick }) {
     const lines = text.split('\n');
     return lines.map((line, idx) => {
       if (line.startsWith('### ')) {
-        return <h4 key={idx} className="text-sm font-bold text-white mt-3 mb-1">{line.slice(4)}</h4>;
+        return <h4 key={idx} className="text-sm font-bold text-[#F8FAFC] mt-3 mb-1">{line.slice(4)}</h4>;
       }
       if (line.startsWith('## ')) {
-        return <h3 key={idx} className="text-base font-bold text-white mt-4 mb-1.5">{line.slice(3)}</h3>;
+        return <h3 key={idx} className="text-base font-bold text-[#F8FAFC] mt-4 mb-1.5">{line.slice(3)}</h3>;
       }
       if (line.startsWith('# ')) {
-        return <h2 key={idx} className="text-lg font-bold text-white mt-4 mb-2">{line.slice(2)}</h2>;
+        return <h2 key={idx} className="text-lg font-bold text-[#F8FAFC] mt-4 mb-2">{line.slice(2)}</h2>;
       }
       if (line.startsWith('- ') || line.startsWith('* ')) {
         return (
-          <li key={idx} className="ml-4 list-disc text-xs sm:text-sm text-slate-200 my-0.5 leading-relaxed">
+          <li key={idx} className="ml-4 list-disc text-xs sm:text-sm text-[#F8FAFC]/90 my-0.5 leading-relaxed">
             {renderBoldText(line.slice(2))}
           </li>
         );
@@ -29,7 +29,7 @@ export function ChatMessage({ message, onSourceClick }) {
       if (/^\d+\.\s/.test(line)) {
         const itemText = line.replace(/^\d+\.\s/, '');
         return (
-          <li key={idx} className="ml-4 list-decimal text-xs sm:text-sm text-slate-200 my-0.5 leading-relaxed">
+          <li key={idx} className="ml-4 list-decimal text-xs sm:text-sm text-[#F8FAFC]/90 my-0.5 leading-relaxed">
             {renderBoldText(itemText)}
           </li>
         );
@@ -38,7 +38,7 @@ export function ChatMessage({ message, onSourceClick }) {
         return <div key={idx} className="h-2" />;
       }
       return (
-        <p key={idx} className="text-xs sm:text-sm text-slate-200 leading-relaxed my-0.5">
+        <p key={idx} className="text-xs sm:text-sm text-[#F8FAFC]/90 leading-relaxed my-0.5">
           {renderBoldText(line)}
         </p>
       );
@@ -49,11 +49,11 @@ export function ChatMessage({ message, onSourceClick }) {
     const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
     return parts.map((part, i) => {
       if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={i} className="font-semibold text-white">{part.slice(2, -2)}</strong>;
+        return <strong key={i} className="font-semibold text-[#F8FAFC]">{part.slice(2, -2)}</strong>;
       }
       if (part.startsWith('`') && part.endsWith('`')) {
         return (
-          <code key={i} className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-slate-800 text-indigo-300 border border-slate-700">
+          <code key={i} className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-[#0a0f26] text-[#38BDF8] border border-[#18224b]">
             {part.slice(1, -1)}
           </code>
         );
@@ -65,15 +65,15 @@ export function ChatMessage({ message, onSourceClick }) {
   return (
     <div className={`flex gap-3 my-4 ${isUser ? 'justify-end' : 'justify-start'}`}>
       {!isUser && (
-        <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-400 flex items-center justify-center text-white shrink-0 shadow-md">
+        <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#2563EB] via-[#8B5CF6] to-[#38BDF8] flex items-center justify-center text-[#F8FAFC] shrink-0 shadow-md shadow-[#2563EB]/20">
           <Brain className="w-4 h-4" />
         </div>
       )}
 
       <div className={`max-w-2xl rounded-2xl p-4 ${
         isUser
-          ? 'bg-indigo-600 text-white rounded-br-none shadow-md'
-          : 'glass-panel rounded-tl-none border border-slate-800'
+          ? 'bg-gradient-to-r from-[#2563EB] to-[#8B5CF6] text-[#F8FAFC] rounded-br-none shadow-md shadow-[#2563EB]/25'
+          : 'glass-panel rounded-tl-none border border-[#18224b] text-[#F8FAFC]'
       }`}>
         <div className="space-y-1">
           {formatContent(message.content)}
@@ -81,13 +81,13 @@ export function ChatMessage({ message, onSourceClick }) {
 
         {/* Source Evidence Citations */}
         {message.sources && message.sources.length > 0 && (
-          <div className="mt-3 pt-3 border-t border-slate-800 flex flex-wrap items-center gap-1.5">
-            <span className="text-[10px] text-slate-400 font-medium">Evidence Sources:</span>
+          <div className="mt-3 pt-3 border-t border-[#18224b] flex flex-wrap items-center gap-1.5">
+            <span className="text-[10px] text-[#94A3B8] font-medium">Evidence Sources:</span>
             {message.sources.map((s, idx) => (
               <button
                 key={idx}
                 onClick={() => onSourceClick && onSourceClick(s)}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-800/90 text-indigo-300 border border-slate-700 hover:border-indigo-500/50 transition cursor-pointer"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono bg-[#0a0f26] text-[#38BDF8] border border-[#18224b] hover:border-[#38BDF8]/50 transition cursor-pointer"
                 title={`Click to inspect evidence in ${s.name || s}`}
               >
                 <Link2 className="w-2.5 h-2.5" />
@@ -99,7 +99,7 @@ export function ChatMessage({ message, onSourceClick }) {
       </div>
 
       {isUser && (
-        <div className="w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-indigo-300 shrink-0">
+        <div className="w-8 h-8 rounded-xl bg-[#0a0f26] border border-[#18224b] flex items-center justify-center text-[#38BDF8] shrink-0">
           <User className="w-4 h-4" />
         </div>
       )}
@@ -108,4 +108,3 @@ export function ChatMessage({ message, onSourceClick }) {
 }
 
 export default ChatMessage;
-

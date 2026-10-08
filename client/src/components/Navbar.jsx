@@ -13,21 +13,21 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-[#18224b] bg-[#050816]/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-            <Brain className="w-5 h-5 text-white" />
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#2563EB] via-[#8B5CF6] to-[#38BDF8] flex items-center justify-center shadow-lg shadow-[#2563EB]/25 group-hover:scale-105 transition-transform">
+            <Brain className="w-5 h-5 text-[#F8FAFC]" />
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-lg text-white tracking-tight">OmniMind</span>
-              <span className="text-[10px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              <span className="font-bold text-lg text-[#F8FAFC] tracking-tight">OmniMind</span>
+              <span className="text-[10px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded bg-[#38BDF8]/10 text-[#38BDF8] border border-[#38BDF8]/25">
                 PRO
               </span>
             </div>
-            <span className="text-[10px] text-slate-400 hidden sm:inline -mt-0.5">
+            <span className="text-[10px] text-[#94A3B8] hidden sm:inline -mt-0.5">
               Cross-Modal Evidence Reasoning
             </span>
           </div>
@@ -37,23 +37,23 @@ export function Navbar() {
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           <Link
             to="/dashboard"
-            className="text-slate-300 hover:text-white transition flex items-center gap-1.5"
+            className="text-[#94A3B8] hover:text-[#F8FAFC] transition flex items-center gap-1.5"
           >
-            <FolderKanban className="w-4 h-4 text-slate-400" />
+            <FolderKanban className="w-4 h-4 text-[#38BDF8]" />
             <span>Workspaces</span>
           </Link>
           <a
             href="#modalities"
-            className="text-slate-300 hover:text-white transition flex items-center gap-1.5"
+            className="text-[#94A3B8] hover:text-[#F8FAFC] transition flex items-center gap-1.5"
           >
-            <Layers className="w-4 h-4 text-slate-400" />
+            <Layers className="w-4 h-4 text-[#8B5CF6]" />
             <span>Unified Evidence</span>
           </a>
           <a
             href="#how-it-works"
-            className="text-slate-300 hover:text-white transition flex items-center gap-1.5"
+            className="text-[#94A3B8] hover:text-[#F8FAFC] transition flex items-center gap-1.5"
           >
-            <Sparkles className="w-4 h-4 text-slate-400" />
+            <Sparkles className="w-4 h-4 text-[#38BDF8]" />
             <span>Reasoning Engine</span>
           </a>
         </nav>
@@ -64,24 +64,24 @@ export function Navbar() {
             <div className="flex items-center gap-2">
               <Link
                 to="/dashboard"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm transition"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#2563EB] hover:bg-[#1d4ed8] text-[#F8FAFC] shadow-sm transition"
               >
                 <span>Dashboard</span>
               </Link>
 
               <Link
                 to="/profile"
-                className="flex items-center gap-2 p-1.5 rounded-lg text-slate-300 hover:bg-slate-800 transition"
+                className="flex items-center gap-2 p-1.5 rounded-lg text-[#94A3B8] hover:bg-[#0e1638] transition"
                 title="Profile & Settings"
               >
-                <div className="w-7 h-7 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-xs font-bold text-indigo-300">
+                <div className="w-7 h-7 rounded-full bg-[#38BDF8]/15 border border-[#38BDF8]/30 flex items-center justify-center text-xs font-bold text-[#38BDF8]">
                   {user.email ? user.email[0].toUpperCase() : 'U'}
                 </div>
               </Link>
 
               <button
                 onClick={handleLogout}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition"
+                className="p-1.5 rounded-lg text-[#94A3B8] hover:text-rose-400 hover:bg-[#0e1638] transition cursor-pointer"
                 title="Log Out"
               >
                 <LogOut className="w-4 h-4" />
@@ -91,13 +91,13 @@ export function Navbar() {
             <div className="flex items-center gap-2">
               <Link
                 to="/login"
-                className="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white transition"
+                className="px-3.5 py-1.5 text-xs font-medium text-[#94A3B8] hover:text-[#F8FAFC] transition"
               >
                 Sign In
               </Link>
               <Link
                 to="/register"
-                className="px-3.5 py-1.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition shadow-sm"
+                className="px-3.5 py-1.5 text-xs font-semibold bg-gradient-to-r from-[#2563EB] to-[#8B5CF6] hover:from-[#1d4ed8] hover:to-[#7c3aed] text-[#F8FAFC] rounded-lg transition shadow-md shadow-[#2563EB]/25"
               >
                 Get Started
               </Link>

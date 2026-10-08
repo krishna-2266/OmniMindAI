@@ -33,40 +33,40 @@ export function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-[#050816] text-[#F8FAFC] flex flex-col selection:bg-[#38BDF8]/30 selection:text-[#F8FAFC]">
       <Navbar />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-1">
-        <div className="pb-6 border-b border-slate-800">
-          <h1 className="text-2xl font-bold text-white">Investigator Profile &amp; Settings</h1>
-          <p className="text-xs text-slate-400 mt-1">
+        <div className="pb-6 border-b border-[#18224b]">
+          <h1 className="text-2xl font-bold text-[#F8FAFC]">Investigator Profile &amp; Settings</h1>
+          <p className="text-xs text-[#94A3B8] mt-1">
             Manage your account credentials, security layer, and AI system connections.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {/* User Details Card */}
-          <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 md:col-span-1 flex flex-col items-center text-center">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-400 p-1 mb-4 shadow-xl shadow-indigo-600/20">
-              <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center text-2xl font-bold text-indigo-300">
+          <div className="p-6 rounded-2xl border border-[#18224b] bg-[#0a0f26]/70 md:col-span-1 flex flex-col items-center text-center">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#2563EB] via-[#8B5CF6] to-[#38BDF8] p-1 mb-4 shadow-xl shadow-[#2563EB]/25">
+              <div className="w-full h-full rounded-full bg-[#050816] flex items-center justify-center text-2xl font-bold text-[#38BDF8]">
                 {profile?.fullName ? profile.fullName[0].toUpperCase() : 'U'}
               </div>
             </div>
 
-            <h3 className="text-base font-bold text-white">
+            <h3 className="text-base font-bold text-[#F8FAFC]">
               {profile?.fullName || user?.user_metadata?.full_name || 'Multimodal Lead'}
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-[#94A3B8] mt-0.5">
               {profile?.email || user?.email || 'demo@omnimind.ai'}
             </p>
 
-            <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#38BDF8]/10 text-[#38BDF8] border border-[#38BDF8]/25">
               <span>Principal Investigator</span>
             </div>
 
             <button
               onClick={handleLogout}
-              className="mt-8 w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600/10 hover:bg-rose-600/20 text-rose-300 border border-rose-500/20 transition"
+              className="mt-8 w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600/10 hover:bg-rose-600/20 text-rose-300 border border-rose-500/20 transition cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span>Log Out</span>
@@ -74,19 +74,19 @@ export function ProfilePage() {
           </div>
 
           {/* System & Architecture Status Card */}
-          <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 md:col-span-2 space-y-6">
+          <div className="p-6 rounded-2xl border border-[#18224b] bg-[#0a0f26]/70 md:col-span-2 space-y-6">
             <div>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
+              <h3 className="text-sm font-semibold text-[#F8FAFC] uppercase tracking-wider mb-3">
                 Multimodal System Architecture
               </h3>
 
               <div className="space-y-3">
-                <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+                <div className="p-3.5 rounded-xl bg-[#050816] border border-[#18224b] flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
                     <Database className="w-4 h-4 text-emerald-400" />
                     <div>
-                      <div className="text-xs font-medium text-white">Database &amp; Row Level Security</div>
-                      <div className="text-[10px] text-slate-400">Supabase PostgreSQL</div>
+                      <div className="text-xs font-medium text-[#F8FAFC]">Database &amp; Row Level Security</div>
+                      <div className="text-[10px] text-[#94A3B8]">Supabase PostgreSQL</div>
                     </div>
                   </div>
                   <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
@@ -94,39 +94,39 @@ export function ProfilePage() {
                   </span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+                <div className="p-3.5 rounded-xl bg-[#050816] border border-[#18224b] flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <Sparkles className="w-4 h-4 text-indigo-400" />
+                    <Sparkles className="w-4 h-4 text-[#38BDF8]" />
                     <div>
-                      <div className="text-xs font-medium text-white">Multimodal Reasoning Engine</div>
-                      <div className="text-[10px] text-slate-400">Google Gemini Multimodal API</div>
+                      <div className="text-xs font-medium text-[#F8FAFC]">Multimodal Reasoning Engine</div>
+                      <div className="text-[10px] text-[#94A3B8]">Google Gemini Multimodal API</div>
                     </div>
                   </div>
-                  <span className="text-[11px] font-semibold text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
+                  <span className="text-[11px] font-semibold text-[#38BDF8] bg-[#38BDF8]/10 px-2.5 py-0.5 rounded-full border border-[#38BDF8]/25">
                     {systemHealth?.services?.gemini === 'active' ? 'Active' : 'Deterministic Fallback'}
                   </span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+                <div className="p-3.5 rounded-xl bg-[#050816] border border-[#18224b] flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <Shield className="w-4 h-4 text-cyan-400" />
+                    <Shield className="w-4 h-4 text-[#8B5CF6]" />
                     <div>
-                      <div className="text-xs font-medium text-white">Evidence Storage Isolation</div>
-                      <div className="text-[10px] text-slate-400">Signed Ephemeral URLs Only</div>
+                      <div className="text-xs font-medium text-[#F8FAFC]">Evidence Storage Isolation</div>
+                      <div className="text-[10px] text-[#94A3B8]">Signed Ephemeral URLs Only</div>
                     </div>
                   </div>
-                  <span className="text-[11px] font-semibold text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20">
+                  <span className="text-[11px] font-semibold text-[#8B5CF6] bg-[#8B5CF6]/10 px-2.5 py-0.5 rounded-full border border-[#8B5CF6]/25">
                     Private
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800/80 text-xs text-slate-400 space-y-1">
-              <div className="font-semibold text-slate-300">Hackathon Deployment Target:</div>
-              <div>Frontend: <code>Vercel (React + Vite)</code></div>
-              <div>Backend: <code>Render (Node.js + Express)</code></div>
-              <div>Database: <code>Supabase (PostgreSQL + RLS + Storage)</code></div>
+            <div className="p-4 rounded-xl bg-[#050816] border border-[#18224b] text-xs text-[#94A3B8] space-y-1">
+              <div className="font-semibold text-[#F8FAFC]">Hackathon Deployment Architecture:</div>
+              <div>Frontend: <code className="text-[#38BDF8]">Vercel (React + Vite)</code></div>
+              <div>Backend: <code className="text-[#38BDF8]">Render (Node.js + Express)</code></div>
+              <div>Database: <code className="text-[#38BDF8]">Supabase (PostgreSQL + RLS + Storage)</code></div>
             </div>
           </div>
         </div>
@@ -136,4 +136,3 @@ export function ProfilePage() {
 }
 
 export default ProfilePage;
-

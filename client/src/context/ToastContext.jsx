@@ -43,19 +43,19 @@ export function ToastProvider({ children }) {
                 ? 'bg-rose-950/90 border-rose-500/30 text-rose-200'
                 : t.type === 'warning'
                 ? 'bg-amber-950/90 border-amber-500/30 text-amber-200'
-                : 'bg-slate-900/90 border-slate-700/50 text-slate-200'
+                : 'bg-[#0a0f26]/95 border-[#38BDF8]/30 text-[#F8FAFC]'
             }`}
           >
             <div className="mt-0.5 shrink-0">
               {t.type === 'success' && <CheckCircle2 className="w-5 h-5 text-emerald-400" />}
               {t.type === 'error' && <AlertCircle className="w-5 h-5 text-rose-400" />}
               {t.type === 'warning' && <AlertTriangle className="w-5 h-5 text-amber-400" />}
-              {t.type === 'info' && <Info className="w-5 h-5 text-sky-400" />}
+              {t.type === 'info' && <Info className="w-5 h-5 text-[#38BDF8]" />}
             </div>
             <div className="flex-1 text-sm font-medium leading-relaxed">{t.message}</div>
             <button
               onClick={() => removeToast(t.id)}
-              className="text-slate-400 hover:text-white transition p-0.5 rounded-md"
+              className="text-[#94A3B8] hover:text-[#F8FAFC] transition p-0.5 rounded-md cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>

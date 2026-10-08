@@ -40,13 +40,13 @@ export function ChatTab({
   return (
     <div className="flex flex-col h-[calc(100vh-13rem)] min-h-[480px]">
       {/* Chat Header */}
-      <div className="pb-3 border-b border-slate-800 flex items-center justify-between">
+      <div className="pb-3 border-b border-[#18224b] flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <MessageSquareCode className="w-5 h-5 text-indigo-400" />
-          <h2 className="text-sm font-semibold text-white">Cross-Modal Forensic Assistant</h2>
+          <MessageSquareCode className="w-5 h-5 text-[#38BDF8]" />
+          <h2 className="text-sm font-semibold text-[#F8FAFC]">Cross-Modal Forensic Assistant</h2>
         </div>
-        <span className="text-[11px] text-slate-400 flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span className="text-[11px] text-[#94A3B8] flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#38BDF8]"></span>
           <span>Indexed to {files.length} project source(s)</span>
         </span>
       </div>
@@ -55,11 +55,11 @@ export function ChatTab({
       <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
         {messages.length === 0 ? (
           <div className="text-center py-12 px-4 max-w-md mx-auto">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mx-auto mb-3">
+            <div className="w-12 h-12 rounded-2xl bg-[#2563EB]/15 border border-[#2563EB]/30 flex items-center justify-center text-[#38BDF8] mx-auto mb-3">
               <Brain className="w-6 h-6" />
             </div>
-            <h3 className="text-sm font-semibold text-white">Ask Cross-Modal Inquiries</h3>
-            <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+            <h3 className="text-sm font-semibold text-[#F8FAFC]">Ask Cross-Modal Inquiries</h3>
+            <p className="text-xs text-[#94A3B8] mt-1 leading-relaxed">
               OmniMind AI synthesizes text, images, PDF documents, audio logs, and videos. Ask questions using the reasoning prompts below.
             </p>
           </div>
@@ -76,7 +76,7 @@ export function ChatTab({
       </div>
 
       {/* Input */}
-      <div className="pt-2 border-t border-slate-800">
+      <div className="pt-2 border-t border-[#18224b]">
         <ChatInput onSend={onSendMessage} isLoading={isSending} />
       </div>
 
@@ -88,17 +88,17 @@ export function ChatTab({
       >
         {selectedSource && (
           <div className="space-y-4">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+            <div className="flex items-center justify-between pb-2 border-b border-[#18224b]">
               <SourceBadge modality={selectedSource.modality} size="sm" />
-              <span className="text-xs font-mono text-slate-400">{selectedSource.original_name}</span>
+              <span className="text-xs font-mono text-[#94A3B8]">{selectedSource.original_name}</span>
             </div>
 
             {selectedSource.ai_summary && (
               <div>
-                <h5 className="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-1">
+                <h5 className="text-xs font-semibold text-[#38BDF8] uppercase tracking-wider mb-1">
                   AI Summary
                 </h5>
-                <p className="text-xs text-slate-300 bg-slate-900/60 p-3 rounded-xl border border-slate-800 leading-relaxed">
+                <p className="text-xs text-[#F8FAFC]/90 bg-[#0a0f26] p-3 rounded-xl border border-[#18224b] leading-relaxed">
                   {selectedSource.ai_summary}
                 </p>
               </div>
@@ -106,10 +106,10 @@ export function ChatTab({
 
             {selectedSource.extracted_text && (
               <div>
-                <h5 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                <h5 className="text-xs font-semibold text-[#94A3B8] uppercase tracking-wider mb-1">
                   Extracted Evidence
                 </h5>
-                <pre className="text-xs text-slate-300 font-mono bg-slate-950 p-3 rounded-xl border border-slate-800 max-h-48 overflow-y-auto whitespace-pre-wrap leading-relaxed">
+                <pre className="text-xs text-[#38BDF8] font-mono bg-[#050816] p-3 rounded-xl border border-[#18224b] max-h-48 overflow-y-auto whitespace-pre-wrap leading-relaxed">
                   {selectedSource.extracted_text}
                 </pre>
               </div>
@@ -118,7 +118,7 @@ export function ChatTab({
             <div className="flex justify-end pt-2">
               <button
                 onClick={() => setSelectedSource(null)}
-                className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-white hover:bg-slate-700 transition"
+                className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[#0a0f26] text-[#F8FAFC] border border-[#18224b] hover:bg-[#121c42] transition cursor-pointer"
               >
                 Close
               </button>
@@ -131,4 +131,3 @@ export function ChatTab({
 }
 
 export default ChatTab;
-
